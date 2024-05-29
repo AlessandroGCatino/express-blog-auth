@@ -1,0 +1,18 @@
+{
+  "name": "express-blog-routing",
+  "version": "1.0.0",
+  "description": "- Usando l'array dei post fornito con le relative immagini, creare un file di routing (routers/posts.js) che conterrà le rotte necessario per l'entità post.\r - \r All'interno creare le seguenti rotte:\r / - index: ritornerà un html con una ul che stamperà la lista dei post",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.1",
+    "slugify": "^1.6.6"
+  }
+}

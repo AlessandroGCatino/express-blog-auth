@@ -2,6 +2,9 @@ const express = require("express"); //CommonJS Modules
 const router = express.Router();
 const postsController = require("../controllers/posts.js")
 const {existsCheck} = require('../middlewares/posts.js');
+const {isAdmin} = require('../middlewares/isAdmin.js');
+
+const {tryAuth} = require("../controllers/auth.js")
 
 const multer = require('multer');
 const uploader = multer({dest: "public/imgs/posts"});
@@ -12,10 +15,10 @@ router.get("/", postsController.index)
 
 //esercizio 28/05
 //rotta che riceve dati e crea nuovo post. OUTPUT: html->redirect, DEFAULT-> Json
-router.post("/", uploader.single("image"), postsController.store )
+router.post("/", tryAuth, uploader.single("image"), postsController.store )
 
 //inseriamo prima il create perchè altrimenti verrebbe letto come slug
-router.get("/create", postsController.create)
+router.get("/create", tryAuth, isAdmin, postsController.create)
 
 router.get("/:slug", postsController.show)
 
